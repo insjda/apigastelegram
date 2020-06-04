@@ -43,9 +43,11 @@ function testBot(){
 }
 ```
 Per executar-lo fer:
+
 ![](https://i.imgur.com/2MgAlc8.png)
 
 I al Telegram apareix:
+
 ![](https://i.imgur.com/r0hMTpv.png)
 
 
