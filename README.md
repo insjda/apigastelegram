@@ -18,26 +18,23 @@ Dins del IDE per crear el script del nou Bot, anar a Recursos -> Biblioteques i 
 
 ## Ús de la llibreria
 
-Definir l'objecte bot com a objecte global per a tot el codi.
+Definir l'objecte bot com a objecte global per a tot el codi. Poseu a token el TOKEN del vostre bot.
 ```javascript=
-var token = "1180859290:AAF_hWI4IQa4nCVR9J8W1A-lkoABDMbGa78"
+var token = ""
 var bot = new APITelegram.XatBot(token);
 ```
 
 A partir de llavors totes les funcions de Telegram s'han de referenciar com a mètodes de l'objecte bot.
 
-Aquí un exemple (**substituiu el *193819657* pel vostre identificador de Telegram**):
+Aquí un exemple (**poseu el valor de variable id pel vostre identificador de Telegram**):
 ```javascript=
-var token = "1180859290:AAF_hWI4IQa4nCVR9J8W1A-lkoABDMbGa78"
+var token = ""
 var bot = new APITelegram.XatBot(token);
 
 function testBot(){
-  var token = "1180859290:AAF_hWI4IQa4nCVR9J8W1A-lkoABDMbGa78"
-var bot = new APITelegram.XatBot(token);
-
-function testBot(){
-  bot.sendText("193819657","Provant llibreria");
-  bot.sendText("193819657",bot.escriu_frase("Provant llibreria","en"));
+  var id = ""
+  bot.sendText(id,"Provant llibreria");
+  bot.sendText(id,bot.escriu_frase("Provant llibreria","en"));
 }
 
 }
