@@ -32,6 +32,7 @@ var XatBot = function(token){
      Logger.log(response.getContentText());
    }
    
+    
    this.sendDocument2 = function(chatId,id,caption)
    {
      var fileId = id ;
@@ -62,6 +63,32 @@ var XatBot = function(token){
      var response = UrlFetchApp.fetch(url);
      Logger.log(response.getContentText());
    }
+
+   this.sendVideo2 = function(chatId,id)
+   {
+
+    var fileId = id ;
+    var img = DriveApp.getFileById(DriveApp.createFile(id).getId());   
+    var blob2 = img.getBlob();
+ 
+
+    var payload = {
+          method: "sendVideo",
+          chat_id: String(chatId),
+          video: blob2,
+          parse_mode: "HTML"
+          //disable_web_page_preview: true,
+    };
+ 
+    var options = {
+     method: "POST",
+     payload: payload,
+     muteHttpExceptions : true
+    };
+     
+    var request = UrlFetchApp.fetch( telegramUrl + '/', options);
+    Logger.log(request.getContentText());
+  }
 
    this.deleteMessage = function(id,id_missatge)
    {
@@ -129,7 +156,7 @@ var XatBot = function(token){
    {
 
     var fileId = id ;
-    var img = DriveApp.getFileById(id);  
+    var img = DriveApp.getFileById(DriveApp.createFile(id).getId());   
     var blob2 = img.getBlob();
  
 
@@ -204,5 +231,18 @@ var XatBot = function(token){
        return frase ; 
   
     }
-};
+    
+    this.answerInlineQuery = function(id, result){
+     var options = {
+        method: "post",
+        payload: {
+          method: "answerInlineQuery",
+          inline_query_id: id,
+          cache_time : 1 ,
+          results:JSON.stringify(result)         }
+     }
+     var request = UrlFetchApp.fetch( telegramUrl + '/', options);
+   }
 
+
+};
